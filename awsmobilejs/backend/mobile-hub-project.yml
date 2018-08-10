@@ -28,6 +28,43 @@ features:
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
-  sign-in: !com.amazonaws.mobilehub.v0.SignIn {}
+  sign-in: !com.amazonaws.mobilehub.v0.SignIn 
+    attributes:
+      enabled: true
+      optional-sign-in: false
+    components:
+      sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider 
+        attributes:
+          alias-attributes:
+            - email
+          mfa-configuration: OFF
+          name: userpool
+          password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
+            min-length: 8
+            require-lower-case: true
+            require-numbers: true
+            require-symbols: false
+            require-upper-case: true
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      productListingsCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: productListingsCRUD
+          requires-signin: false
+        paths:
+          /productListings: !com.amazonaws.mobilehub.v0.Function 
+            name: productListings
+            codeFilename: uploads/productListings.zip
+            handler: lambda.handler
+            enableCORS: true
+            runtime: nodejs6.10
+            environment: {}
+          '/productListings/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            name: productListings
+            codeFilename: uploads/productListings.zip
+            handler: lambda.handler
+            enableCORS: true
+            runtime: nodejs6.10
+            environment: {}
 name: Barcode-DB-2018-08-10-13-09-12
 region: us-east-1
