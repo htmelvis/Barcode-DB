@@ -19,7 +19,6 @@ class Application extends Component {
 
   componentDidMount() {
     console.log('I AM NOW MOUNTED!');
-    // API NAME, ENDPOINT, WILL RETURN A PROMISE
     API.get('productListingsCRUD', '/products').then(products => {
       this.setState({ products });
     });
@@ -43,12 +42,12 @@ class Application extends Component {
     // const updatedproduct = { ...product, avenged: !product.avenged };
 
     // PUT IN APP.JS IN BACKEND IN ORDER TO SEE DETAILS ** 
-    API.put('productListingsCRUD', '/products', { body: updatedproduct }).then(() => {
-      const otherproducts = this.state.products.filter(
-        other => other.id !== product.id,
-      );
-      this.setState({ products: [updatedproduct, ...otherproducts] });
-    });
+    // API.put('productListingsCRUD', '/products', { body: updatedproduct }).then(() => {
+    //   const otherproducts = this.state.products.filter(
+    //     other => other.id !== product.id,
+    //   );
+    //   // this.setState({ products: [updatedproduct, ...otherproducts] });
+    // });
 
   };
 

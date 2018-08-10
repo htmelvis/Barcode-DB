@@ -1,5 +1,39 @@
 --- !com.amazonaws.mobilehub.v0.Project 
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      productListingsCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: productListingsCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /productListings: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/productListings-20180810133707.zip
+            description: 'Handler for calls to resource path : /productListings/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: yE6XjFTao/vJu6MWRNEoCI/b3mrjV/TrhqqZcvfzwOg=
+            memorySize: '128'
+            modified: '2018-08-10T17:38:01.504+0000'
+            name: productListings
+            runtime: nodejs6.10
+            timeout: '3'
+            version: DOYRnNXh24GZ9XyCDkmifGpl_yyKKIuq
+          '/productListings/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/productListings-20180810133707.zip
+            description: 'Handler for calls to resource path : /productListings/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: yE6XjFTao/vJu6MWRNEoCI/b3mrjV/TrhqqZcvfzwOg=
+            memorySize: '128'
+            modified: '2018-08-10T17:38:01.504+0000'
+            name: productListings
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 4OmwsKX7MMomKwApQS_uLTXf4bvY6ffc
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -40,31 +74,10 @@ features:
           mfa-configuration: OFF
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
-            min-length: 8
+            min-length: '8'
             require-lower-case: true
             require-numbers: true
             require-symbols: false
             require-upper-case: true
-  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
-    components:
-      productListingsCRUD: !com.amazonaws.mobilehub.v0.API 
-        attributes:
-          name: productListingsCRUD
-          requires-signin: false
-        paths:
-          /productListings: !com.amazonaws.mobilehub.v0.Function 
-            name: productListings
-            codeFilename: uploads/productListings.zip
-            handler: lambda.handler
-            enableCORS: true
-            runtime: nodejs6.10
-            environment: {}
-          '/productListings/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            name: productListings
-            codeFilename: uploads/productListings.zip
-            handler: lambda.handler
-            enableCORS: true
-            runtime: nodejs6.10
-            environment: {}
 name: Barcode-DB-2018-08-10-13-09-12
 region: us-east-1

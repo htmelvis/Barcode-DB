@@ -56,7 +56,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get('/productListings', function(req, res) {
+app.get('/products', function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -90,7 +90,7 @@ app.get('/productListings', function(req, res) {
  * HTTP Get method for get single object *
  *****************************************/
 
-app.get('/productListings/object/:productId', function(req, res) {
+app.get('/products/:productId', function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -179,7 +179,7 @@ app.post(path, function(req, res) {
 * HTTP remove method to delete object *
 ***************************************/
 
-app.delete('/productListings/object/:productId', function(req, res) {
+app.delete('/products/:productId', function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
