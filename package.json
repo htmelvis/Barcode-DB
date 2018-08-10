@@ -1,0 +1,32 @@
+{
+  "name": "Barcode-DB",
+  "version": "1.0.0",
+  "description": "Interact with a list of UPC barcodes and print their images.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htmelvis/Barcode-DB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htmelvis/Barcode-DB/issues"
+  },
+  "homepage": "https://github.com/htmelvis/Barcode-DB#readme",
+  "dependencies": {
+    "aws-amplify": "^1.0.5",
+    "aws-amplify-react": "^1.0.5",
+    "jshint": "^2.9.6",
+    "lodash": "^4.17.10",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "1.1.4"
+  }
+}

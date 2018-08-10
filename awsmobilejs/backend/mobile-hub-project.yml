@@ -1,0 +1,33 @@
+--- !com.amazonaws.mobilehub.v0.Project 
+features:
+  content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
+    attributes:
+      enabled: true
+      visibility: public-global
+    components:
+      release: !com.amazonaws.mobilehub.v0.Bucket {}
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              gTin: N
+              lastPrintDate: S
+              printCount: N
+              productId: N
+              productName: S
+              upcUrl: S
+              userId: S
+            hashKeyName: userId
+            hashKeyType: S
+            rangeKeyName: productId
+            rangeKeyType: N
+            tableName: ___DYNAMIC_PREFIX___-productListings
+            tablePrivacy: private
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
+    components:
+      analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
+  sign-in: !com.amazonaws.mobilehub.v0.SignIn {}
+name: Barcode-DB-2018-08-10-13-09-12
+region: us-east-1
