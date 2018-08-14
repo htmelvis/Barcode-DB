@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import './Application.css';
+import AppHeader from './AppHeader';
+import ProductListings from './ProductListings';
 import { API } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 
-// {
-// "gTin": "INSERT VALUE HERE",
-//   "lastPrintDate": "INSERT VALUE HERE",
-//     "printCount": "INSERT VALUE HERE",
-//       "productId": "INSERT VALUE HERE",
-//         "productName": "INSERT VALUE HERE",
-//           "upcUrl": "INSERT VALUE HERE"
-// }
 
 class Application extends Component {
   state = {
@@ -30,6 +24,11 @@ class Application extends Component {
     });
   };
 
+  runCSVUpload = () => {
+    API.post('productListingsCRUD', 'products/upload').then( () => {
+        console.log('yo it launched the route')
+    })
+  }
   removeProduct = product => {
     API.del('productListingsCRUD', `/products/${product.id}`).then(() => {
       this.setState({
@@ -52,13 +51,16 @@ class Application extends Component {
   };
 
   render() {
-    // const { products } = this.state;
-    // const unavengedproducts = products.filter(product => !product.avenged);
-    // const avengedproducts = products.filter(product => product.avenged);
+    const { products } = this.state;
 
     return (
       <div className="Application">
-        Hello, World
+        <AppHeader />
+        <div className="table-contents-area">
+          <ProductListings products={products} />
+          <button onClick={() => this.runCSVUpload }>Load CSVs</button>
+        </div>
+        <p>Inventory Barcode Generator / Printer - US Netting &copy; 2018</p>
       </div>
     );
   }

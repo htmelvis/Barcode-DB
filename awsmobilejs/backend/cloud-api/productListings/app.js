@@ -5,11 +5,11 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may not use 
 or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
 */
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const AWS = require('aws-sdk')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+import CSVUpload from './csvUpload';
 
 AWS.config.update({ region: process.env.REGION });
 const dynamodb = new AWS.DynamoDB.DocumentClient();
@@ -24,7 +24,7 @@ const partitionKeyType = "S"
 const sortKeyName = "productId";
 const sortKeyType = "N";
 const hasSortKey = true;
-const path = "/productListings";
+const path = "/products";
 
 const awsmobile = {}
 
@@ -173,6 +173,29 @@ app.post(path, function(req, res) {
       res.json({success: 'post call succeed!', url: req.url, data: data})
     }
   });
+});
+
+/************************************
+* HTTP post method for insert object csv to DB*
+*************************************/
+app.post('/products/upload', function (req, res) {
+  const CSV_FILE = "../../../../assets/products.csv"
+
+  if (userIdPresent) {
+    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  }
+  CSVUpload(dynamodb, CSV_FILE);
+  // let putItemParams = {
+  //   TableName: tableName,
+  //   Item: req.body
+  // }
+  // dynamodb.put(putItemParams, (err, data) => {
+  //   if (err) {
+  //     res.json({ error: err, url: req.url, body: req.body });
+  //   } else {
+  //     res.json({ success: 'post call succeed!', url: req.url, data: data })
+  //   }
+  // });
 });
 
 /**************************************

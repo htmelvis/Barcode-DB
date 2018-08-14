@@ -9,31 +9,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /productListings: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/productListings-20180810133707.zip
+            codeFilename: uploads/productListings-20180810153122.zip
             description: 'Handler for calls to resource path : /productListings/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: yE6XjFTao/vJu6MWRNEoCI/b3mrjV/TrhqqZcvfzwOg=
+            hashcode: +KOkCjVUW3euKKkRvBbacSJV2sb3oCWF6im+3Ol0cC4=
             memorySize: '128'
-            modified: '2018-08-10T17:38:01.504+0000'
+            modified: '2018-08-10T19:33:00.607+0000'
             name: productListings
             runtime: nodejs6.10
             timeout: '3'
-            version: DOYRnNXh24GZ9XyCDkmifGpl_yyKKIuq
+            version: RSCiTBIhMdC_qlgZWyh.5IBSYRoWB6aC
           '/productListings/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/productListings-20180810133707.zip
+            codeFilename: uploads/productListings-20180810153122.zip
             description: 'Handler for calls to resource path : /productListings/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: yE6XjFTao/vJu6MWRNEoCI/b3mrjV/TrhqqZcvfzwOg=
+            hashcode: +KOkCjVUW3euKKkRvBbacSJV2sb3oCWF6im+3Ol0cC4=
             memorySize: '128'
-            modified: '2018-08-10T17:38:01.504+0000'
+            modified: '2018-08-10T19:33:00.607+0000'
             name: productListings
             runtime: nodejs6.10
             timeout: '3'
-            version: 4OmwsKX7MMomKwApQS_uLTXf4bvY6ffc
+            version: 2mp8Hi6UDBnhZMyKf7nVwudlHXbQzON3
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -49,6 +49,7 @@ features:
               gTin: N
               lastPrintDate: S
               printCount: N
+              productDescription: S
               productId: N
               productName: S
               upcUrl: S
